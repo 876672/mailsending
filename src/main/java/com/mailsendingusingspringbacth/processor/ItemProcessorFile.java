@@ -2,8 +2,6 @@ package com.mailsendingusingspringbacth.processor;
 
 import java.util.regex.Pattern;
 
-import org.apache.poi.xssf.usermodel.XSSFSheet;
-import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.springframework.batch.item.ItemProcessor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -20,13 +18,7 @@ public class ItemProcessorFile implements ItemProcessor<Student, Student> {
 	@Autowired
 	EmailServiceImpl emailService;
 
-	@Autowired
-	XSSFWorkbook workbook;
 
-	@Autowired
-	XSSFSheet sheet;
-
-	private XSSFSheet invalidEmailSheet;
 
 	@Override
 	public Student process(Student student) throws Exception {
