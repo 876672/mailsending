@@ -1,0 +1,110 @@
+.header {
+	margin-top: 20px;
+	text-align: left;
+	position: running(header);
+	margin-bottom: 20px
+}
+
+@page {
+	margin: 100px;
+	size: A4;
+	font-family: EmbArial !important;
+	margin-left: 80px;
+	margin-right: 60px; 
+	@bottom-right { content : element( footer);
+	content: "Page " counter(page) " of " counter(pages);
+}
+
+
+
+}
+@page :first {
+  @top-left {
+    content: element(header);
+  }
+}
+
+.footer {
+	position: running(footer);
+}
+
+
+
+
+
+@font-face {
+	font-family: EmbArial;
+	src: url("Arial.ttf") format("truetype");
+}
+
+@font-face {
+	font-family: EmbArialBold;
+	src: url("ArialBold.ttf")
+		format("truetype");
+}
+
+@font-face {
+	font-family: EmbArialItalic;
+	src: url("ArialItalic.ttf")
+		format("truetype");
+}
+
+
+
+@font-face {
+	font-family: EmbArialItalicBold;
+	src: url("ArialItalicBold.ttf")
+		format("truetype");
+}
+
+
+@font-face {
+	font-family: IBMPlexMonoBold;
+	src: url("IBMPlexMono-Bold.ttf")
+		format("truetype");
+}
+
+@font-face {
+	font-family: IBMPlexMonoBoldItalic;
+	src: url("IBMPlexMono-BoldItalic.ttf")
+		format("truetype");
+}
+
+
+
+@font-face {
+	font-family: IBMPlexMonoRegular;
+	src: url("IBMPlexMono-Regular.ttf")
+		format("truetype");
+}
+
+#inputTable {
+   width: 100%;
+   border-collapse: collapse;
+}
+
+#inputTable td, #inputTable th {
+   border: 1px solid #ddd;
+   padding: 8px;
+}
+
+#inputTable tr:nth-child(even){background-color: #f2f2f2;}
+
+#inputTable th {
+   padding-top: 12px;
+   padding-bottom: 12px;
+   text-align: left;
+   background-color: #4CAF50;
+   color: white;
+}
+
+
+
+
+body {
+	font-family: EmbArial;
+}
+
+body {
+	font-family: EmbArial;
+}
