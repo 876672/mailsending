@@ -31,6 +31,7 @@ public class SchedulerConfig {
                     .addLong("uniqueness", System.nanoTime()).toJobParameters());
             log.info("Job scheduler finished to work");
             System.out.println("executionCount--------------" +executionCount);
+            
         } else {
             log.info("Job scheduler stopped after 1 executions.");
         }

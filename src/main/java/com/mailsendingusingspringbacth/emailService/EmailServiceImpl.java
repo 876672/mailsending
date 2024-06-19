@@ -38,7 +38,7 @@ public class EmailServiceImpl {
         helper.setText("Dear " + student.getFullname() + ",\n\n" +
                 "The PDF provided below is your bank statement.", true);
 
-          File pdfFile = sendPdf.generatePdf();
+          File pdfFile = sendPdf.generatePdf(student);
         
           if (!pdfFile.exists()) {
             throw new MessagingException("Attachment file not found: " + pathToAttachment);
