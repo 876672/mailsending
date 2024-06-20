@@ -1,7 +1,5 @@
 package com.mailsendingusingspringbacth.processor;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.regex.Pattern;
 
 import org.springframework.batch.item.ItemProcessor;
@@ -21,6 +19,13 @@ public class ItemProcessorFile implements ItemProcessor<Student, Student> {
 	EmailServiceImpl emailService;
 
 
+	/**
+	 * Process.
+	 *
+	 * @param student the student
+	 * @return the student
+	 * @throws Exception the exception
+	 */
 	@Override
 	public Student process(Student student) throws Exception {
 		try {
@@ -40,10 +45,17 @@ public class ItemProcessorFile implements ItemProcessor<Student, Student> {
 		return student;
 	}
 
+	/** The path to attachment. */
 	String pathToAttachment = "target/estatement.pdf";
 
 	// ----------------------------------------------------------------------------------------------------
 
+	/**
+	 * Check valid email.
+	 *
+	 * @param email the email
+	 * @return true, if successful
+	 */
 	private boolean checkValidEmail(String email) {
 
 		String emailRegex = "^[a-zA-Z0-9_+&*-]+(?:\\." + "[a-zA-Z0-9_+&*-]+)*@" + "(?:[a-zA-Z0-9-]+\\.)+[a-z"

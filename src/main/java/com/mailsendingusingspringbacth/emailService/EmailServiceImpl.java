@@ -17,17 +17,24 @@ import jakarta.mail.internet.MimeMessage;
 import lombok.extern.slf4j.Slf4j;
 
 
-
-
 @Slf4j
 @Service
 public class EmailServiceImpl {
 
     @Autowired
     private JavaMailSender emailSender;
+    
     @Autowired
     private SendPdf sendPdf;
 
+    /**
+     * Send mime message.
+     *
+     * @param student the student
+     * @param subject the subject
+     * @param pathToAttachment the path to attachment
+     * @throws Exception the exception
+     */
     public void sendMimeMessage(Student student, String subject, String pathToAttachment) throws Exception {
          MimeMessage message = emailSender.createMimeMessage();
 

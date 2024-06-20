@@ -4,17 +4,18 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
-import java.nio.file.Files;
-import java.nio.file.Paths;
-
 import org.springframework.stereotype.Component;
 import org.thymeleaf.context.Context;
 import org.thymeleaf.spring6.SpringTemplateEngine;
-
 import com.mailsendingusingspringbacth.model.Student;
 import com.openhtmltopdf.pdfboxout.PdfRendererBuilder;
-
 import lombok.RequiredArgsConstructor;
+
+
+
+
+
+
 
 @Component
 @RequiredArgsConstructor
@@ -22,6 +23,13 @@ public class SendPdf {
 
 	private final SpringTemplateEngine templateEngine;
 
+	/**
+	 * Generate pdf.
+	 *
+	 * @param student the student
+	 * @return the file
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 */
 	public File generatePdf(Student student) throws IOException {
 		
 		System.out.println("===================student"+student);

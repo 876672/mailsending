@@ -2,7 +2,6 @@ package com.mailsendingusingspringbacth.model;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
-import lombok.Builder;
 import lombok.Data;
 
 @Data

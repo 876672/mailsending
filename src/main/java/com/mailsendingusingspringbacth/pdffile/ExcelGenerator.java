@@ -13,9 +13,16 @@ import com.mailsendingusingspringbacth.model.Student;
 
 
 
+
 @Component
 public class ExcelGenerator {
 
+	/**
+	 * Generate excel.
+	 *
+	 * @param chunk the chunk
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 */
 	public void generateExcel(Chunk<? extends Student> chunk) throws IOException {
 
 		System.out.println("generateExcel---------------");
@@ -46,6 +53,12 @@ public class ExcelGenerator {
 		workbook.close();
 	}
 
+	/**
+	 * Check valid email.
+	 *
+	 * @param email the email
+	 * @return true, if successful
+	 */
 	// -------------------------------------------------------------------------------------------------
 	private boolean checkValidEmail(String email) {
 

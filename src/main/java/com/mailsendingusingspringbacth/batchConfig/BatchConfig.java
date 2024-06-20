@@ -34,17 +34,28 @@ import com.mailsendingusingspringbacth.repositories.StuRepository;
 
 import lombok.RequiredArgsConstructor;
 
+
+
+
 @Configuration
 @RequiredArgsConstructor
 public class BatchConfig {
 
-	 private final StuRepository stuRepository;
-	 private final PlatformTransactionManager transactionManager;
+ 	private final StuRepository stuRepository;
+	 
+ 	private final PlatformTransactionManager transactionManager;
 	
 //    private final JobCompletionNotificationListener listener;
 //    private final ExcelGenerator excelGenerator; 
 
-	@Bean
+	/**
+ * Email sender job.
+ *
+ * @param jobRepository the job repository
+ * @param dataSource the data source
+ * @return the job
+ */
+@Bean
 	public Job emailSenderJob(JobRepository jobRepository,DataSource dataSource) {
 		System.out.println("job-------------------");
 		return new JobBuilder("send-mail", jobRepository)
@@ -54,6 +65,12 @@ public class BatchConfig {
 				.build();
 	}
 
+	/**
+	 * Email sender step.
+	 *
+	 * @param jobRepository the job repository
+	 * @return the step
+	 */
 	@Bean
 	public Step emailSenderStep(JobRepository jobRepository) {
 		System.out.println("Step-------------------11133");
@@ -66,6 +83,13 @@ public class BatchConfig {
 				.build();
 	}
 	
+	/**
+	 * Creates the excel with invalid email.
+	 *
+	 * @param jobRepository the job repository
+	 * @param dataSource the data source
+	 * @return the step
+	 */
 	@Bean
 	public Step createExcelWithInvalidEmail(JobRepository jobRepository,DataSource dataSource) {
 		System.out.println("Step-------------------11133");
@@ -82,7 +106,12 @@ public class BatchConfig {
                   
 
  
-	    @Bean
+	    /**
+    	 * Write in excel.
+    	 *
+    	 * @return the item writer<? super student>
+    	 */
+    	@Bean
 	   public ItemWriter<? super Student> writeInExcel() {
 		return new WriterExcel();
 	}
@@ -125,7 +154,12 @@ public class BatchConfig {
 //	}
 
 	
-	@Bean
+	/**
+ * Stu processor.
+ *
+ * @return the item processor
+ */
+@Bean
 	public ItemProcessor<Student, Student> stuProcessor() {
 		System.out.println("ItemProcessor-------------------");
 		return new ItemProcessorFile();
@@ -133,6 +167,11 @@ public class BatchConfig {
 
 
 
+	/**
+	 * Write file.
+	 *
+	 * @return the repository item writer
+	 */
 	@Bean
 	public RepositoryItemWriter<Student> writeFile() {
 		System.out.println("RepositoryItemWriter-------------------");
@@ -148,6 +187,11 @@ public class BatchConfig {
 	
 	
 
+	/**
+	 * Read file.
+	 *
+	 * @return the flat file item reader
+	 */
 	@Bean
 	public FlatFileItemReader<Student> readFile() {
 		System.out.println("FlatFileItemReader-------------------");
@@ -170,6 +214,11 @@ public class BatchConfig {
  
 	}
 
+	/**
+	 * Line mapper.
+	 *
+	 * @return the line mapper
+	 */
 	public LineMapper<Student> lineMapper() {
 		DefaultLineMapper<Student> lineMapper = new DefaultLineMapper<>();
 
